@@ -1,7 +1,6 @@
 package cast
 
-// Suite of casting functions to speed up solutions
-// This is NOT idiomatic Go... but AOC isn't about that...
+// Suite of casting functions to speed up solutions in prep for adventofcode
 
 import (
 	"fmt"
@@ -9,9 +8,6 @@ import (
 	"strings"
 )
 
-// ToInt will case a given arg into an int type.
-// Supported types are:
-//   - string
 func ToInt(arg interface{}) int {
 	var val int
 	switch arg.(type) {
@@ -27,11 +23,6 @@ func ToInt(arg interface{}) int {
 	return val
 }
 
-// ToString will case a given arg into an int type.
-// Supported types are:
-//   - int
-//   - byte
-//   - rune
 func ToString(arg interface{}) string {
 	var str string
 	switch arg.(type) {
@@ -55,7 +46,6 @@ const (
 	ASCIICodeLowerZ = int('z') // 97
 )
 
-// ToASCIICode returns the ascii code of a given input
 func ToASCIICode(arg interface{}) int {
 	var asciiVal int
 	switch arg.(type) {
@@ -74,7 +64,6 @@ func ToASCIICode(arg interface{}) int {
 	return asciiVal
 }
 
-// ASCIIIntToChar returns a one character string of the given int
 func ASCIIIntToChar(code int) string {
 	return string(rune(code))
 }

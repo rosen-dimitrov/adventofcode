@@ -1,17 +1,15 @@
 package util
 
+//suite for functions to read files in prep for adventofcode
+
 import (
-	"io/ioutil"
+	"os"
 	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
 )
 
-// ReadFile is a wrapper over io/ioutil.ReadFile but also determines the dynamic
-// absolute path to the file.
-//
-// Deprecated in favor of go:embed, refer to scripts/skeleton/tmpls
 func ReadFile(pathFromCaller string) string {
 	// Docs: https://golang.org/pkg/runtime/#Caller
 	_, filename, _, ok := runtime.Caller(1)
@@ -23,7 +21,7 @@ func ReadFile(pathFromCaller string) string {
 	absolutePath := path.Join(path.Dir(filename), pathFromCaller)
 
 	// read the entire file & return the byte slice as a string
-	content, err := ioutil.ReadFile(absolutePath)
+	content, err := os.ReadFile(absolutePath)
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +30,6 @@ func ReadFile(pathFromCaller string) string {
 	return strings.TrimRight(strContent, "\n")
 }
 
-// Dirname is a port of __dirname in node
 func Dirname() string {
 	_, filename, _, ok := runtime.Caller(1)
 	if !ok {
