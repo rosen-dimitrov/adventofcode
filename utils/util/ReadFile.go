@@ -1,6 +1,4 @@
-package utils
-
-// I assume there is going to be a lot of reading files/ converting files and whatnot in advent of code so this is a util lib to help wiht all of that
+package util
 
 import (
 	"io/ioutil"
@@ -8,12 +6,12 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-
-	"github.com/foolishhumans/advent-of-code-lets-go/cast"
 )
 
 // ReadFile is a wrapper over io/ioutil.ReadFile but also determines the dynamic
 // absolute path to the file.
+//
+// Deprecated in favor of go:embed, refer to scripts/skeleton/tmpls
 func ReadFile(pathFromCaller string) string {
 	// Docs: https://golang.org/pkg/runtime/#Caller
 	_, filename, _, ok := runtime.Caller(1)
@@ -41,11 +39,4 @@ func Dirname() string {
 		panic("getting calling function")
 	}
 	return filepath.Dir(filename)
-}
-
-func ParseInput(input string) (ans []int) {
-	for _, l := range strings.Split(input, "\n") {
-		ans = append(ans, cast.ToInt(l))
-	}
-	return ans
 }
