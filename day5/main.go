@@ -76,11 +76,11 @@ func parseCommand(s string) [3]int {
 	return command
 }
 
-func parseColumn(commandsInput []string, col int) string {
+func parseColumn(crateInput []string, col int) string {
 	var result strings.Builder
 
-	for i := 0; i < len(commandsInput); i++ {
-		if crateLetter := commandsInput[i][col]; unicode.IsLetter(rune(crateLetter)) {
+	for i := 0; i < len(crateInput); i++ {
+		if crateLetter := crateInput[i][col]; unicode.IsLetter(rune(crateLetter)) {
 			result.WriteByte(crateLetter)
 		}
 	}
