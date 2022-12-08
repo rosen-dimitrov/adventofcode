@@ -123,6 +123,7 @@ func calcualteWinnerForStandardGame(inputLine string) int {
 		return 3 + objectValue
 	}
 
+	//I win
 	if ((data[move[0]]|1<<2)-
 		(data[move[1]]|0<<2))%3 == 0 {
 		return 6 + objectValue
